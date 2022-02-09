@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.not.drunk.fragment.SplashScreenFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_splash_screen" >
+
+        <action
+            android:id="@+id/subjective_question"
+            app:destination="@+id/subjectiveQuestionFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+
+        <action
+            android:id="@+id/mcq_question"
+            app:destination="@+id/MCQFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/subjectiveQuestionFragment"
+        android:name="com.not.drunk.fragment.SubjectiveFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_subjective">
+        <action
+            android:id="@+id/subjective_question"
+            app:destination="@+id/subjectiveQuestionFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+        <action
+            android:id="@+id/result_screen"
+            app:destination="@+id/resultScreenFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+        <action
+            android:id="@+id/reset_game"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+        <action
+            android:id="@+id/mcq_question"
+            app:destination="@+id/MCQFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/resultScreenFragment"
+        android:name="com.not.drunk.fragment.ResultScreenFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_result_screen">
+        <action
+            android:id="@+id/reset_game"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/MCQFragment"
+        android:name="com.not.drunk.fragment.MCQFragment"
+        android:label="fragment_mcq"
+        tools:layout="@layout/fragment_mcq" >
+        <action
+            android:id="@+id/subjective_question"
+            app:destination="@+id/subjectiveQuestionFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+        <action
+            android:id="@+id/result_screen"
+            app:destination="@+id/resultScreenFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+        <action
+            android:id="@+id/reset_game"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+        <action
+            android:id="@+id/mcq_question"
+            app:destination="@+id/MCQFragment"
+            app:popUpTo="@id/splashScreenFragment">
+        </action>
+    </fragment>
+
+</navigation>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.SubjectiveFragment">
+
+    <data>
+        <variable
+            name="fragmentNODViewModel"
+            type="com.not.drunk.viewmodel.NODViewModel" />
+
+        <variable
+            name="subjectiveFragment"
+            type="com.not.drunk.fragment.SubjectiveFragment" />
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{fragmentNODViewModel.currentQuestion}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintBottom_toTopOf="@+id/text_answer_input_layout"
+                app:layout_constraintEnd_toEndOf="@+id/text_answer_input_layout"
+                app:layout_constraintStart_toStartOf="@+id/text_answer_input_layout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.90999997" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_answer_input_layout"
+                style="@style/Widget.NOD.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_your_answer"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:helperTextTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+                app:layout_constraintEnd_toEndOf="@+id/btn_submit"
+                app:layout_constraintStart_toStartOf="@+id/btn_submit"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.9">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_player_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:inputType="@{fragmentNODViewModel.inputType}"
+                    android:maxLines="1"
+                    android:text="@={fragmentNODViewModel.playerAnswer}" />
+                <!--TWO-WAY BINDING OF DATA, "=" WAS MISSING TO SET THE DATA-->
+                <!--https://developer.android.com/topic/libraries/data-binding/two-way#top_of_page-->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="259dp"
+                android:layout_height="64dp"
+                android:onClick="@{()->subjectiveFragment.onSubmit()}"
+                android:text="@{fragmentNODViewModel.buttonLabel}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_drinking_quotes_subjective"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="TextView"
+                android:text="@{fragmentNODViewModel.quote}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_submit"
+                app:layout_constraintStart_toStartOf="@+id/btn_submit"
+                app:layout_constraintTop_toBottomOf="@+id/btn_submit"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

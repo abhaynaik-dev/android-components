@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.MCQFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.not.drunk.viewmodel.NODViewModel" />
+
+        <variable
+            name="mcqFragment"
+            type="com.not.drunk.fragment.MCQFragment" />
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.currentQuestion}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintBottom_toTopOf="@+id/mcq_radio_group"
+                app:layout_constraintEnd_toEndOf="@+id/btn_submit"
+                app:layout_constraintStart_toStartOf="@+id/btn_submit"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.81"
+                tools:text="Question" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="259dp"
+                android:layout_height="64dp"
+                android:onClick="@{()->mcqFragment.onSubmit()}"
+                android:text="@{viewModel.buttonLabel}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.57" />
+
+            <TextView
+                android:id="@+id/tv_drinking_quotes_subjective"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="TextView"
+                android:text="@{viewModel.quote}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_submit"
+                app:layout_constraintStart_toStartOf="@+id/btn_submit"
+                app:layout_constraintTop_toBottomOf="@+id/btn_submit"/>
+
+            <RadioGroup
+                android:id="@+id/mcq_radio_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.90999997">
+
+                <RadioGroup
+                    android:id="@+id/mcq_radio_group1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/radio_ans_a"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.answerA}"
+                        tools:text="RadioButton"
+                        android:onClick="@{mcqFragment.onAnsweredGroup1}"
+                        android:layout_weight="1"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_ans_b"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.answerB}"
+                        android:onClick="@{mcqFragment.onAnsweredGroup1}"
+                        tools:text="RadioButton"
+                        android:layout_weight="1"/>
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/mcq_radio_group2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/radio_ans_c"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.answerC}"
+                    tools:text="RadioButton"
+                    android:onClick="@{mcqFragment.onAnsweredGroup2}"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/radio_ans_d"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.answerD}"
+                    android:onClick="@{mcqFragment.onAnsweredGroup2}"
+                    tools:text="RadioButton"
+                    android:layout_weight="1"/>
+
+                </RadioGroup>
+
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

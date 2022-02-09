@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.ResultScreenFragment">
+
+    <data>
+        <variable
+            name="fragmentNODViewModel"
+            type="com.not.drunk.viewmodel.NODViewModel" />
+        <variable
+            name="resultScreen"
+            type="com.not.drunk.fragment.ResultScreenFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_begin"
+            android:layout_width="259dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="@{()->resultScreen.resetTheGame()}"
+            android:text="@string/btn_reset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_result"
+            app:layout_constraintVertical_bias="0.100000024" />
+
+        <TextView
+            android:id="@+id/tv_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintBottom_toTopOf="@+id/tv_result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{fragmentNODViewModel.result}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btn_begin"
+            app:layout_constraintStart_toStartOf="@+id/btn_begin"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="take a cab home" />
+
+        <TextView
+            android:id="@+id/tv_drinking_quotes_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="TextView"
+            android:text="@{fragmentNODViewModel.quote}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btn_begin"
+            app:layout_constraintStart_toStartOf="@+id/btn_begin"
+            app:layout_constraintTop_toBottomOf="@+id/btn_begin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
